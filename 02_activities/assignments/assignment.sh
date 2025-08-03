@@ -26,22 +26,23 @@ unzip -q rawdata.zip
 
 mkdir data
 #cd ./newproject
-mv ./rawdata ./data
-mv ./data/rawdata ./data/raw
+mkdir ./data/raw
+mv ./rawdata ./data/raw
+
 ls ./data/raw
-mkdir ./data/procesed
-mkdir ./data/procesed/server_logs ./data/procesed/user_logs ./data/procesed/event_logs
+mkdir ./data/processed
+mkdir ./data/processed/server_logs ./data/processed/user_logs ./data/processed/event_logs
 
-mv ./data/raw/server* ./data/procesed/server_logs/
-mv ./data/raw/event* ./data/procesed/event_logs/
-mv ./data/raw/user* ./data/procesed/user_logs/
+mv ./data/raw/rawdata/server* ./data/processed/server_logs/
+mv ./data/raw/rawdata/event* ./data/processed/event_logs/
+mv ./data/raw/rawdata/user* ./data/processed/user_logs/
 
-rm -r ./data/raw/ipaddr*
-rm -r ./data/procesed/user_logs/user_ipaddr*
+rm -r ./data/raw/rawdata/ipaddr*
+rm -r ./data/processed/user_logs/user_ipaddr*
 
-ls ./data/procesed/event_logs/ > ./data/inventory.txt
-ls ./data/procesed/server_logs/ >> ./data/inventory.txt
-ls ./data/procesed/user_logs/ >> ./data/inventory.txt
+ls ./data/processed/event_logs/ > ./data/inventory.txt
+ls ./data/processed/server_logs/ >> ./data/inventory.txt
+ls ./data/processed/user_logs/ >> ./data/inventory.txt
 
 
 ###########################################
