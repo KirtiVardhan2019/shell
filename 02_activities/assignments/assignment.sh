@@ -18,11 +18,39 @@ cd newproject
 
 mkdir analysis output
 touch README.md
+echo "# Project Name: DSI Consulting Inc." > README.md
 touch analysis/main.py
 
 # download client data
 curl -Lo rawdata.zip https://github.com/UofT-DSI/shell/raw/refs/heads/main/02_activities/assignments/rawdata.zip
 unzip -q rawdata.zip
+
+mkdir data
+#cd ./newproject
+mkdir ./data/raw
+mv ./rawdata ./data/raw
+
+ls ./data/raw
+mkdir ./data/processed
+mkdir ./data/processed/server_logs ./data/processed/user_logs ./data/processed/event_logs
+
+cp ./data/raw/rawdata/server* ./data/processed/server_logs/
+cp ./data/raw/rawdata/event* ./data/processed/event_logs/
+cp ./data/raw/rawdata/user* ./data/processed/user_logs/
+
+cp ./data/raw/rawdata/server* ./data/raw
+cp ./data/raw/rawdata/event* ./data/raw
+cp ./data/raw/rawdata/user* ./data/raw
+
+rm -r ./data/raw/rawdata/ipaddr*
+rm -r ./data/raw/rawdata/user_ipaddr*
+rm -r ./data/raw/user_ipaddr*
+rm -r ./data/processed/user_logs/user_ipaddr*
+
+ls ./data/processed/event_logs/ > ./data/inventory.txt
+ls ./data/processed/server_logs/ >> ./data/inventory.txt
+ls ./data/processed/user_logs/ >> ./data/inventory.txt
+
 
 ###########################################
 # Complete assignment here
@@ -40,6 +68,7 @@ unzip -q rawdata.zip
 # 6. Repeat the above step for user logs and event logs
 
 # 7. For user privacy, remove all files containing IP addresses (files with "ipaddr" in the filename) from ./data/raw and ./data/processed/user_logs
+rf -rf ./data
 
 # 8. Create a file named ./data/inventory.txt that lists all the files in the subfolders of ./data/processed
 
