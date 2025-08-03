@@ -27,17 +27,18 @@ unzip -q rawdata.zip
 mkdir data
 #cd ./newproject
 mkdir ./data/raw
-mv ./rawdata/* ./data/raw
+mv ./rawdata ./data/raw
 
 ls ./data/raw
 mkdir ./data/processed
 mkdir ./data/processed/server_logs ./data/processed/user_logs ./data/processed/event_logs
 
-mv ./data/raw/server* ./data/processed/server_logs/
-mv ./data/raw/event* ./data/processed/event_logs/
-mv ./data/raw/user* ./data/processed/user_logs/
+cp ./data/raw/rawdata/server* ./data/processed/server_logs/
+cp ./data/raw/rawdata/event* ./data/processed/event_logs/
+cp ./data/raw/rawdata/user* ./data/processed/user_logs/
 
-rm -r ./data/raw/ipaddr*
+rm -r ./data/raw/rawdata/ipaddr*
+rm -r ./data/raw/rawdata/user_ipaddr*
 rm -r ./data/processed/user_logs/user_ipaddr*
 
 ls ./data/processed/event_logs/ > ./data/inventory.txt
