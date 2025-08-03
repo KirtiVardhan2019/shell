@@ -34,14 +34,16 @@ mkdir ./data/processed
 mkdir ./data/processed/server_logs ./data/processed/user_logs ./data/processed/event_logs
 
 cp ./data/raw/rawdata/server* ./data/processed/server_logs/
-cp ./data/raw/rawdata/server* ./data/raw
 cp ./data/raw/rawdata/event* ./data/processed/event_logs/
-cp ./data/raw/rawdata/event* ./data/raw
 cp ./data/raw/rawdata/user* ./data/processed/user_logs/
+
+cp ./data/raw/rawdata/server* ./data/raw
+cp ./data/raw/rawdata/event* ./data/raw
 cp ./data/raw/rawdata/user* ./data/raw
 
 rm -r ./data/raw/rawdata/ipaddr*
 rm -r ./data/raw/rawdata/user_ipaddr*
+rm -r ./data/raw/user_ipaddr*
 rm -r ./data/processed/user_logs/user_ipaddr*
 
 ls ./data/processed/event_logs/ > ./data/inventory.txt
